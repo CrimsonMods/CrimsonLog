@@ -16,10 +16,14 @@ Logging of non-chat systems will come soon.
 
 Want to support my V Rising Mod development? 
 
-Donations Accepted with [Ko-Fi](https://ko-fi.com/skytech6)
+Donations Accepted
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/skytech6)
 
 Or buy/play my games! 
 
 [Train Your Minibot](https://store.steampowered.com/app/713740/Train_Your_Minibot/) 
 
 [Boring Movies](https://store.steampowered.com/app/1792500/Boring_Movies/)
+
+**This mod was a paid creation. If you are looking to hire someone to make a mod for any Unity game reach out to me on Discord! (skytech6)**

@@ -4,7 +4,6 @@ using ProjectM;
 using ProjectM.Network;
 using System;
 using System.IO;
-using System.Threading.Tasks;
 using Unity.Entities;
 
 namespace CrimsonLog.Systems;
@@ -20,17 +19,17 @@ public static class Chat
 
     private static async void LogMessage(string chatType, string prefix, string message, string characterName, string additionalInfo = "")
     {
-        await CreateDirectory();
+        string path = await Logger.CreateDirectory("Chat");
 
-        string start = SingleFile ? $"{Time()} | {chatType}" : Time();
+        string start = SingleFile ? $"{Logger.Time()} | {chatType}" : Logger.Time();
         string logEntry = $"{start} | {characterName}{additionalInfo} | {message}\n";
 
-        string fileName = $"CrimsonLogs/Chat/{(SingleFile ? "chat_" : prefix)}{DateTime.Now:dd-MM-yyyy}";
+        string fileName = $"{path}/{(SingleFile ? "chat_" : prefix)}{DateTime.Now:dd-MM-yyyy}";
 
         if (!File.Exists(fileName))
         {
             File.Create(fileName).Dispose();
-            DeleteOldLogs(prefix);
+            Logger.DeleteOldLogs(path, prefix);
         }
 
         File.AppendAllText(fileName, logEntry);
@@ -83,37 +82,5 @@ public static class Chat
         var singleton = networkIdLookupEntity.Read<NetworkIdSystem.Singleton>();
         singleton.GetNetworkIdLookupRW().TryGetValue(networkid, out Entity entity);
         return entity;
-    }
-
-    private static string Time()
-    {
-        return $"{DateTime.Now:HH:mm.ss}";
-    }
-
-    private static void DeleteOldLogs(string prefix)
-    {
-        int daysAgo = Settings.DaysToKeep.Value;
-
-        if (daysAgo < 0) return;
-
-        string[] files = Directory.GetFiles("CrimsonLogs/Chat", $"{prefix}*");
-        foreach (string file in files)
-        {
-            FileInfo fileInfo = new FileInfo(file);
-            if ((DateTime.Now - fileInfo.CreationTime).Days > daysAgo)
-            {
-                File.Delete(file);
-            }
-        }
-    }
-
-    private static Task CreateDirectory()
-    {
-        if (!Directory.Exists("CrimsonLogs/Chat"))
-        {
-            Directory.CreateDirectory("CrimsonLogs/Chat");
-        }
-
-        return Task.CompletedTask;
     }
 }

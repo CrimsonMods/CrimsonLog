@@ -58,5 +58,4 @@ public class Plugin : BasePlugin
         _harmony?.UnpatchSelf();
         return true;
     }
-
 }
