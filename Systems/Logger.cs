@@ -21,7 +21,7 @@ public static class Logger
     { 
         string path = await CreateDirectory(folderName);
 
-        string fileName = $"{path}/{recordName}_{DateTime.Now:dd-MM-yyyy}";
+        string fileName = $"{path}/{recordName}_{DateTime.Now:yyyy-MM-dd}";
 
         if (!File.Exists(fileName))
         {
