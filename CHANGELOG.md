@@ -1,3 +1,6 @@
+`1.1.0`
+- fixed date format for first party logs
+
 `1.0.0`
 - changed date format to YYYY-MM-DD for better sorting
 
