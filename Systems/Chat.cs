@@ -24,7 +24,7 @@ public static class Chat
         string start = SingleFile ? $"{Logger.Time()} | {chatType}" : Logger.Time();
         string logEntry = $"{start} | {characterName}{additionalInfo} | {message}\n";
 
-        string fileName = $"{path}/{(SingleFile ? "chat_" : prefix)}{DateTime.Now:dd-MM-yyyy}";
+        string fileName = $"{path}/{(SingleFile ? "chat_" : prefix)}{DateTime.Now:yyy-MM-dd}";
 
         if (!File.Exists(fileName))
         {
