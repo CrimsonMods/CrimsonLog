@@ -10,11 +10,7 @@ Logged:
 - Player Bans (via [CrimsonBanned](https://thunderstore.io/c/v-rising/p/CrimsonMods/CrimsonBanned/))
 - Chat Filtering (via [CrimsonChatFilter](https://thunderstore.io/c/v-rising/p/CrimsonMods/CrimsonChatFilter/))
 
-![LogTopView](https://raw.githubusercontent.com/CrimsonMods/CrimsonLog/master/.github/images/ss1.png)
-
-![InnerView](https://raw.githubusercontent.com/CrimsonMods/CrimsonLog/master/.github/images/ss2.png)
-
-![LogView](https://raw.githubusercontent.com/CrimsonMods/CrimsonLog/master/.github/images/ss3.png)
+![LogTopView](https://raw.githubusercontent.com/CrimsonMods/CrimsonLog/master/.github/images/ss1.png)->![InnerView](https://raw.githubusercontent.com/CrimsonMods/CrimsonLog/master/.github/images/ss2.png)->![LogView](https://raw.githubusercontent.com/CrimsonMods/CrimsonLog/master/.github/images/ss3.png)
 
 ## Installation
 * Install [BepInEx](https://v-rising.thunderstore.io/package/BepInEx/BepInExPack_V_Rising/)
