@@ -5,7 +5,7 @@ using System.IO;
 namespace CrimsonLog.Structs;
 
 public readonly struct Settings
-{ 
+{
     // base configs
     public static ConfigEntry<bool> ToggleLog { get; private set; }
     public static ConfigEntry<int> DaysToKeep { get; private set; }
@@ -17,6 +17,10 @@ public readonly struct Settings
     public static ConfigEntry<bool> RegionChat { get; private set; }
     public static ConfigEntry<bool> LocalChat { get; private set; }
     public static ConfigEntry<bool> TeamChat { get; private set; }
+
+    public static ConfigEntry<bool> CastleHeart { get; private set; }
+
+    public static ConfigEntry<bool> ClanMembership { get; private set; }
 
     public static void InitConfig()
     {
@@ -38,6 +42,12 @@ public readonly struct Settings
             "Log local chat");
         TeamChat = InitConfigEntry("Chat", "Team", false,
             "Log team chat");
+
+        CastleHeart = InitConfigEntry("CastleHeart", "CastleHeart", true,
+            "Log castle heart activity");
+
+        ClanMembership = InitConfigEntry("Clans", "Membership", true,
+            "Log clan membership changes");
     }
 
     static ConfigEntry<T> InitConfigEntry<T>(string section, string key, T defaultValue, string description)

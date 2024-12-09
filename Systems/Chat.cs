@@ -1,5 +1,4 @@
-﻿using Bloodstone.Hooks;
-using CrimsonLog.Structs;
+﻿using CrimsonLog.Structs;
 using ProjectM;
 using ProjectM.Network;
 using System;
@@ -35,35 +34,35 @@ public static class Chat
         File.AppendAllText(fileName, logEntry);
     }
 
-    public static void Global(VChatEvent message)
+    public static void Global(ChatMessageEvent message, User fromUser)
     {
         if (LogGlobal)
         {
-            LogMessage("Global", "global_", message.Message.ToString(), message.User.CharacterName.ToString());
+            LogMessage("Global", "global_", message.MessageText.ToString(), fromUser.CharacterName.ToString());
         }
     }
 
-    public static void Region(VChatEvent message)
+    public static void Region(ChatMessageEvent message, User fromUser)
     {
         if (LogRegion)
         {
-            LogMessage("Region", "region_", message.Message.ToString(), message.User.CharacterName.ToString());
+            LogMessage("Region", "region_", message.MessageText.ToString(), fromUser.CharacterName.ToString());
         }
     }
-    public static void Local(VChatEvent message)
+    public static void Local(ChatMessageEvent message, User fromUser)
     {
         if (LogLocal)
         {
-            LogMessage("Local", "local_", message.Message.ToString(), message.User.CharacterName.ToString());
+            LogMessage("Local", "local_", message.MessageText.ToString(), fromUser.CharacterName.ToString());
         }
     }
 
-    public static void Team(VChatEvent message)
+    public static void Team(ChatMessageEvent message, User fromUser)
     {
         if (LogTeam)
         {
-            string clanName = message.User.ClanEntity._Entity.Read<ClanTeam>().Name.Value;
-            LogMessage("Clan", "clan_", message.Message.ToString(), message.User.CharacterName.ToString(), $" | {clanName}");
+            string clanName = fromUser.ClanEntity._Entity.Read<ClanTeam>().Name.Value;
+            LogMessage("Clan", "clan_", message.MessageText.ToString(), fromUser.CharacterName.ToString(), $" | {clanName}");
         }
     }
 

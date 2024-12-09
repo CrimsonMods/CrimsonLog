@@ -1,3 +1,9 @@
+`latest`
+- Log Operations of Castle Hearts
+- Log Clan Membership Changes
+- Removed Bloodstone Dependency
+- Updated BepInEx packages
+
 `1.1.0`
 - fixed date format for first party logs
 

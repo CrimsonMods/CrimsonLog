@@ -1,11 +1,20 @@
 # CrimsonLog
-`Server side only` mod for a questing system in V Rising
+`Server side only` an adminitation utility mod for V Rising servers.
 
-This is a rather simple mod. It includes logging of all the available chats (including whisper and team chats). 
+CrimsonLog keeps structured files logging a number of V Rising systems in a clean and readable format within your server root directory for future auditing.
 
-All of it is confiruable what you want to log and if you want the logs seperated into different files. 
+Logged:
+- Chat Messages (Global, Region, Whisper, Team, Local)
+- Clan Membership Changes
+- Castle Heart Operations (Upgrade, Abandon, Expose, Claim, Raid, Destroy)
+- Player Bans (via [CrimsonBanned](https://thunderstore.io/c/v-rising/p/CrimsonMods/CrimsonBanned/))
+- Chat Filtering (via [CrimsonChatFilter](https://thunderstore.io/c/v-rising/p/CrimsonMods/CrimsonChatFilter/))
 
-Logging of non-chat systems will come soon.
+![LogTopView](https://raw.githubusercontent.com/CrimsonMods/CrimsonLog/master/.github/images/ss1.png)
+
+![InnerView](https://raw.githubusercontent.com/CrimsonMods/CrimsonLog/master/.github/images/ss2.png)
+
+![LogView](https://raw.githubusercontent.com/CrimsonMods/CrimsonLog/master/.github/images/ss3.png)
 
 ## Installation
 * Install [BepInEx](https://v-rising.thunderstore.io/package/BepInEx/BepInExPack_V_Rising/)

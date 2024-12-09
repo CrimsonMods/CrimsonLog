@@ -1,7 +1,4 @@
-﻿using Bloodstone.API;
-using Il2CppInterop.Runtime;
-using ProjectM;
-using Stunlock.Core;
+﻿using Il2CppInterop.Runtime;
 using System;
 using System.Runtime.InteropServices;
 using Unity.Collections;
@@ -11,7 +8,7 @@ namespace CrimsonLog;
 
 public static class ECSExtensions
 {
-    static EntityManager EntityManager => VWorld.Server.EntityManager;
+    static EntityManager EntityManager => Core.EntityManager;
     public static unsafe void Write<T>(this Entity entity, T componentData) where T : struct
     {
         // Get the ComponentType for T
@@ -106,5 +103,10 @@ public static class ECSExtensions
     {
         var ct = new ComponentType(Il2CppType.Of<T>());
         EntityManager.RemoveComponent(entity, ct);
+    }
+
+    public static bool Exists(this Entity entity)
+    {
+        return entity != Entity.Null && EntityManager.Exists(entity);
     }
 }

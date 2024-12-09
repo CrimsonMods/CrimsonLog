@@ -29,27 +29,6 @@ public class Plugin : BasePlugin
         _harmony = Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
         Settings.InitConfig();
         LogInstance.LogInfo($"{MyPluginInfo.PLUGIN_NAME} loaded");
-
-        Bloodstone.Hooks.Chat.OnChatMessage += ((x) =>
-        {
-            if (!Settings.ToggleLog.Value) return;
-
-            switch (x.Type)
-            {
-                case ProjectM.Network.ChatMessageType.Global:
-                    Chat.Global(x);
-                    break;
-                case ProjectM.Network.ChatMessageType.Region:
-                    Chat.Region(x);
-                    break;
-                case ProjectM.Network.ChatMessageType.Local:
-                    Chat.Local(x);
-                    break;
-                case ProjectM.Network.ChatMessageType.Team:
-                    Chat.Team(x);
-                    break;
-            }
-        });
     }
 
     public override bool Unload()

@@ -1,4 +1,5 @@
-﻿using CrimsonLog.Systems;
+﻿using CrimsonLog.Structs;
+using CrimsonLog.Systems;
 using HarmonyLib;
 using ProjectM;
 using ProjectM.Network;
@@ -14,6 +15,8 @@ public static class ChatMessageSystem_Patch
     [HarmonyPrefix]
     public static bool OnUpdate(ChatMessageSystem __instance)
     {
+        if (!Settings.ToggleLog.Value) return true;
+
         if (__instance.__query_661171423_0 != null)
         {
             NativeArray<Entity> entities = __instance.__query_661171423_0.ToEntityArray(Allocator.Temp);
@@ -22,7 +25,31 @@ public static class ChatMessageSystem_Patch
                 var fromData = __instance.EntityManager.GetComponentData<FromCharacter>(entity);
                 var userData = __instance.EntityManager.GetComponentData<User>(fromData.User);
                 var chatEventData = __instance.EntityManager.GetComponentData<ChatMessageEvent>(entity);
-                
+
+                if (chatEventData.MessageType == ChatMessageType.Global)
+                {
+                    Chat.Global(chatEventData, userData);
+                    continue;
+                }
+
+                if (chatEventData.MessageType == ChatMessageType.Region)
+                {
+                    Chat.Region(chatEventData, userData);
+                    continue;
+                }
+
+                if (chatEventData.MessageType == ChatMessageType.Local)
+                {
+                    Chat.Region(chatEventData, userData);
+                    continue;
+                }
+
+                if (chatEventData.MessageType == ChatMessageType.Team)
+                {
+                    Chat.Team(chatEventData, userData);
+                    continue;
+                }
+
                 if (chatEventData.ReceiverEntity.IsValid)
                 {
                     Chat.Whisper(chatEventData, userData);
